@@ -9,14 +9,23 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Dashboard")),
       body: Center(
-        child: ElevatedButton(
-          child: const Text("Profile"),
-          onPressed: () {
-            String name = "Peter";
-            GoRouter.of(context).go("/profile/$name");
-          },
-        ),
-      ),
+          child: Column(
+        children: [
+          ElevatedButton(
+              onPressed: () {
+                String name = "Peter";
+                // GoRouter.of(context).go("/profile/$name");
+                context.goNamed("profile", pathParameters: {"name": name});
+              },
+              child: const Text("Profile")),
+          ElevatedButton(
+              onPressed: () {
+                context
+                    .goNamed("query-param", queryParameters: {"name": "Test"});
+              },
+              child: const Text("query param"))
+        ],
+      )),
     );
   }
 }

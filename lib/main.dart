@@ -3,16 +3,25 @@ import 'package:go_router/go_router.dart';
 import 'package:test_drive/childprofile.dart';
 import 'package:test_drive/dashboard.dart';
 import 'package:test_drive/profile.dart';
+import 'package:test_drive/queryparam.dart';
 
 final GoRouter _router = GoRouter(
   routes: [
     GoRoute(
+      name: "dashboard",
       path: '/',
       builder: (context, state) => const Dashboard(),
     ),
     GoRoute(
-      path: '/profile/:name',
+      name: "profile",
+      path: '/profile/:name', // path param
       builder: (context, state) => Profile(name: state.pathParameters["name"]!),
+    ),
+    GoRoute(
+      name: "query-param",
+      path: '/query-param',
+      builder: (context, state) =>
+          QueryParam(username: state.uri.queryParameters["name"]!),
     ),
   ],
 );
