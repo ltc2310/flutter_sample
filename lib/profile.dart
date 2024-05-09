@@ -8,7 +8,7 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Welcome $name")),
+      appBar: AppBar(title: Text("Profile $name")),
       body: Center(
           child: Column(
         children: [
@@ -17,11 +17,11 @@ class Profile extends StatelessWidget {
                 context.go("/");
               },
               child: const Text("Dashboard")),
-          // ElevatedButton(
-          //     onPressed: () {
-          //       context.go("/profile/child-profile");
-          //     },
-          //     child: const Text("child profile"))
+          ElevatedButton(
+              onPressed: () {
+                context.goNamed("child-profile");
+              },
+              child: const Text("child profile"))
         ],
       )),
     );

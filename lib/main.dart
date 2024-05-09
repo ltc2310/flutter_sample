@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:test_drive/animation.dart';
 import 'package:test_drive/childprofile.dart';
 import 'package:test_drive/dashboard.dart';
+import 'package:test_drive/error_page.dart';
+import 'package:test_drive/login.dart';
 import 'package:test_drive/profile.dart';
 import 'package:test_drive/queryparam.dart';
 
+// final isLoggedIn = true;
+
 final GoRouter _router = GoRouter(
+  errorBuilder: (context, state) => const ErrorPage(),
+  // redirect: (context, state) {
+  //   if (isLoggedIn) {
+  //     return "/dashboard";
+  //   } else {
+  //     return "/";
+  //   }
+  // },
   routes: [
+    // GoRoute(
+    //   path: '/',
+    //   builder: (context, state) => const Login(),
+    // ),
     GoRoute(
       name: "dashboard",
       path: '/',
@@ -23,6 +40,26 @@ final GoRouter _router = GoRouter(
       builder: (context, state) =>
           QueryParam(username: state.uri.queryParameters["name"]!),
     ),
+    GoRoute(
+        name: "child-profile",
+        path: '/child-profile',
+        builder: (context, state) => ChildProfile()),
+    GoRoute(
+      name: "animation",
+      path: '/animation',
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+            child: AnimationPage(),
+            fullscreenDialog: true,
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return FadeTransition(
+                  opacity:
+                      CurveTween(curve: Curves.bounceIn).animate(animation),
+                  child: child);
+            });
+      },
+    )
   ],
 );
 

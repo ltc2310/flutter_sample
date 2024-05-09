@@ -16,6 +16,7 @@ class Dashboard extends StatelessWidget {
                 String name = "Peter";
                 // GoRouter.of(context).go("/profile/$name");
                 context.goNamed("profile", pathParameters: {"name": name});
+                // context.pushNamed("profile", pathParameters: {"name": name});
               },
               child: const Text("Profile")),
           ElevatedButton(
@@ -23,7 +24,12 @@ class Dashboard extends StatelessWidget {
                 context
                     .goNamed("query-param", queryParameters: {"name": "Test"});
               },
-              child: const Text("query param"))
+              child: const Text("query param")),
+          ElevatedButton(
+              onPressed: () {
+                context.goNamed("animation");
+              },
+              child: const Text("Animation"))
         ],
       )),
     );
