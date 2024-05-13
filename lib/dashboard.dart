@@ -15,8 +15,8 @@ class Dashboard extends StatelessWidget {
               onPressed: () {
                 String name = "Peter";
                 // GoRouter.of(context).go("/profile/$name");
-                context.goNamed("profile", pathParameters: {"name": name});
-                // context.pushNamed("profile", pathParameters: {"name": name});
+                // context.goNamed("profile", pathParameters: {"name": name});
+                context.pushNamed("profile", pathParameters: {"name": name});
               },
               child: const Text("Profile")),
           ElevatedButton(

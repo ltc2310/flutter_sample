@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:test_drive/animation.dart';
 import 'package:test_drive/childprofile.dart';
 import 'package:test_drive/dashboard.dart';
+import 'package:test_drive/employee.dart';
+import 'package:test_drive/employeedetail.dart';
 import 'package:test_drive/error_page.dart';
 import 'package:test_drive/login.dart';
 import 'package:test_drive/profile.dart';
@@ -59,7 +61,13 @@ final GoRouter _router = GoRouter(
                   child: child);
             });
       },
-    )
+    ),
+    GoRoute(
+        name: "employees", path: '/', builder: (context, state) => Employees()),
+    GoRoute(
+        name: "employees-detail",
+        path: '/employees-detail/:id',
+        builder: (context, state) => EDetail()),
   ],
 );
 
